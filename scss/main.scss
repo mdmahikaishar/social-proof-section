@@ -1,0 +1,269 @@
+@import "./variable";
+@import "./reset";
+@import "./mixin";
+
+body {
+    min-height: 100vh;
+}
+
+.bgTop {
+    width: 50%;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: url("../images/bg-pattern-top-desktop.svg");
+    background-position: left top;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @include mobile() {
+        width: 100%;
+
+        background-image: url("../images/bg-pattern-top-mobile.svg");
+    }
+}
+.bgBottom {
+    width: 50%;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-image: url("../images/bg-pattern-bottom-desktop.svg");
+    background-position: right bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @include mobile() {
+        width: 100%;
+
+        background-image: url("../images/bg-pattern-bottom-mobile.svg");
+    }
+}
+
+.sect {
+    width: 100%;
+    max-width: 1500px;
+    min-height: 100vh;
+    padding: 2em 10%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $white;
+
+    // Top
+    &Top {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @include medium() {
+            flex-direction: column;
+        }
+
+        &Left {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            h1 {
+                font-size: 3.2rem;
+                line-height: 1em;
+                color: $veryDarkMagenta;
+            }
+            p {
+                max-width: 400px;
+                margin-top: 1em;
+                font-size: 1.1rem;
+                color: $darkGrayishMagenta;
+            }
+
+            @include medium() {
+                width: 100%;
+                text-align: center;
+                align-items: center;
+            }
+
+            @include mobile() {
+                h1 {
+                    font-size: 2rem;
+                }
+                p {
+                    font-size: 0.9rem;
+                }
+            }
+        }
+
+        &Right {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            @include medium() {
+                width: 100%;
+                margin-top: 1.5em;
+                justify-content: center;
+                align-items: center;
+            }
+
+            &Card {
+                margin: 0.5em 0;
+                width: 450px;
+                padding: 1em 2em;
+                display: flex;
+                align-items: center;
+                background-color: $lightGrayishMagenta;
+                border-radius: 10px;
+                transition: all 0.2s ease;
+
+                &Rating {
+                    width: fit-content;
+                }
+
+                h2 {
+                    margin-left: 1.5em;
+                    font-size: 1.1rem;
+                    color: $veryDarkMagenta;
+                }
+
+                @include desktop() {
+                    $gap: 3em;
+
+                    &:first-child {
+                        margin-right: calc(#{$gap} * 2);
+                    }
+
+                    &:nth-child(2) {
+                        margin-right: calc(#{$gap} * 1);
+                    }
+
+                    &:last-child {
+                        margin-right: calc(#{$gap} * 0);
+                    }
+                }
+                @include mobile() {
+                    max-width: 300px;
+                    width: 90%;
+                    padding: 0.5em 1em;
+                    flex-direction: column;
+
+                    &Rating {
+                        img {
+                            width: 0.75rem;
+                            height: 0.75rem;
+                        }
+                    }
+
+                    h2 {
+                        margin: 0;
+                        margin-top: 0.5em;
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+        }
+    }
+
+    &Bottom {
+        margin-top: 2em;
+        display: grid;
+        grid-gap: 1.5em;
+        grid-template: 1fr / repeat(3, 1fr);
+        place-items: center;
+
+        @include medium() {
+            grid-template: repeat(3, 1fr) / 1fr;
+        }
+
+        @include mobile() {
+            grid-gap: 1rem;
+        }
+    }
+
+    &Card {
+        max-width: 450px;
+        padding: 2.5em 2em;
+        background-color: $veryDarkMagenta;
+        border-radius: 10px;
+
+        &Top {
+            display: flex;
+            align-items: center;
+        }
+
+        img {
+            width: 2.5em;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+        }
+
+        &Info {
+            margin-left: 1em;
+
+            h2 {
+                font-size: 1rem;
+                color: $white;
+            }
+            p {
+                font-size: 1rem;
+                color: $softPink;
+            }
+        }
+
+        blockquote {
+            margin-top: 1em;
+            color: $white;
+
+            &::before {
+                content: '"';
+            }
+            &::after {
+                content: '"';
+            }
+        }
+
+        @include desktop() {
+            $gap: 2em;
+
+            &:first-child {
+                margin-top: calc(#{$gap} * 0);
+            }
+
+            &:nth-child(2) {
+                margin-top: calc(#{$gap} * 1);
+            }
+
+            &:last-child {
+                margin-top: calc(#{$gap} * 2);
+            }
+        }
+
+        @include mobile() {
+            padding: 1.5em;
+
+            img {
+                width: 2em;
+            }
+
+            &Info {
+                margin-left: 1em;
+
+                h2 {
+                    font-size: 0.9rem;
+                }
+                p {
+                    font-size: 0.9rem;
+                }
+            }
+
+            blockquote {
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
